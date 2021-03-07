@@ -5,12 +5,12 @@ const Header = props => {
 
   return (
     <header className="cart-header">
-      <a href="#/"> <h1> Shopping Cart </h1> </a>
+      <a href="#/" className='cart-header__title'> <h1> Shopping Cart </h1> </a>
       
-      <a href="#/cart">
-          <FiShoppingCart /> {' '}
-          { countCartItems ? ( <button className="badge"> {countCartItems} </button> ) : ( '' ) }
-        </a> {' '}
+      <a href="#/cart" className='cart-header__basket'>
+          <FiShoppingCart className='cart-header__icon' />
+          { countCartItems ? ( <button className="cart-header__badge"> {countCartItems} </button> ) : '' }
+        </a>
     </header>
   );
 }

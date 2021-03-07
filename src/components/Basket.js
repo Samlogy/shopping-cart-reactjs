@@ -1,30 +1,34 @@
-import React from 'react';
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 
-export default function Basket(props) {
-  const { cartItems, onAdd, onRemove } = props;
+const Basket = props => {
+  const { cartItems, AddItem, RemoveItem } = props;
+
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
   
+  const checkout = () => {
+    alert('Implement Checkout!');
+  }
+
   return (
-    <aside className="block col-1">
-      <h2>Cart Items</h2>
+    <div className="basket-container">
+      <h2> Cart Items </h2>
+
       <div>
-        {cartItems.length === 0 && <div>Cart is empty</div>}
-        {cartItems.map((item) => (
-          <div key={item.id} className="row">
-            <div className="col-2">{item.name}</div>
-            <div className="col-2">
-              <button onClick={() => onRemove(item)} className="remove">
-                -
-              </button>{' '}
-              <button onClick={() => onAdd(item)} className="add">
-                +
-              </button>
+        {cartItems.length === 0 && <div> Cart is empty </div> }
+
+        {cartItems.map(item => (
+          <div key={item.id} className="item">
+            <div className="item__name"> {item.name} </div>
+
+            <div className="item__actions">
+              <AiOutlinePlus onClick={() => AddItem(item)} className="btn btn--add" />
+              <AiOutlineMinus onClick={() => RemoveItem(item)} className="btn btn--remove" />
             </div>
 
-            <div className="col-2 text-right">
+            <div className="item__price-quantity">
               {item.qty} x ${item.price.toFixed(2)}
             </div>
           </div>
@@ -33,42 +37,44 @@ export default function Basket(props) {
         {cartItems.length !== 0 && (
           <>
             <hr></hr>
-            <div className="row">
-              <div className="col-2">Items Price</div>
-              <div className="col-1 text-right">${itemsPrice.toFixed(2)}</div>
+            <div className="item__price-brut">
+              <div className="">Items Price</div>
+              <div className="">${itemsPrice.toFixed(2)}</div>
             </div>
 
-            <div className="row">
-              <div className="col-2">Tax Price</div>
-              <div className="col-1 text-right">${taxPrice.toFixed(2)}</div>
+            <div className="item__price-tax">
+              <div className="">Tax Price</div>
+              <div className="">${taxPrice.toFixed(2)}</div>
             </div>
 
-            <div className="row">
-              <div className="col-2">Shipping Price</div>
-              <div className="col-1 text-right">
-                ${shippingPrice.toFixed(2)}
+            <div className="item__price-shipping">
+              <div className="">Shipping Price</div>
+              <div className=""> ${shippingPrice.toFixed(2)} </div>
+            </div>
+            
+            <hr />
+
+            <div className="item__price-total">
+              <div className="">
+                <strong> Total Price </strong>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-2">
-                <strong>Total Price</strong>
-              </div>
-
-              <div className="col-1 text-right">
-                <strong>${totalPrice.toFixed(2)}</strong>
+              <div className="">
+                <strong> ${totalPrice.toFixed(2)} </strong>
               </div>
             </div>
             <hr />
 
-            <div className="row">
-              <button onClick={() => alert('Implement Checkout!')}>
-                Checkout
+            <div className="checkout">
+              <button className='btn btn--checkout' onClick={() => checkout()}>
+                  CHECKOUT
               </button>
             </div>
           </>
         )}
       </div>
-    </aside>
+    </div>
   );
 }
+
+export default Basket;

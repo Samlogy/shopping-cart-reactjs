@@ -19,14 +19,29 @@ header.cart-header {
   align-items: center;
 }
 .cart-header a { text-decoration: none; color: #333 }
-.cart-header svg { 
+.cart-header .cart-header__icon { 
   font-size: 1.5rem;
   padding: .5rem;
-  border-radius: .5rem;
+  border-radius: .75rem;
   transition: all .5s;
 }
-.cart-header svg:hover { background-color: lightgray; color: #333 }
+.cart-header .cart-header__icon:hover { background-color: lightgray; color: #333 }
 .cart-header h1 { margin: 0 }
+
+.cart-header__badge {
+  font-size: .7rem;
+    background-color: red;
+    border: .1rem solid transparent;
+    border-radius: 50%;
+    color: #fefefe;
+    text-align: center;
+    position: absolute;
+    right: -.4vw;
+    top: -.3vw;
+}
+.cart-header__basket {
+  position: relative;
+}
 
 /* Main */
 .cart-main {
@@ -39,9 +54,10 @@ header.cart-header {
 .products-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 2rem 0;
 }
-
+.product-container *{ margin-bottom: .5rem }
 .product-container {
   flex-basis: 15rem;
   display: flex;
@@ -49,11 +65,59 @@ header.cart-header {
   border: .1rem solid lightgray;
   border-radius: .5rem;
   align-items: center;
-  /* padding: .5rem; */
   margin: 1rem;
 }
 
-.product-container img.small {
+.product-container img {
   min-height: 10rem;
   width: 100%;
 }
+
+.btn {
+  padding: .5rem;
+  outline: 0;
+  cursor: pointer;
+}
+
+.btn--add {
+  background-color: lightgray;
+  border: .1rem solid lightgray;
+}
+.btn--remove {
+  background-color: lightgray;
+  border: .1rem solid lightgray;
+}
+.btn--remove-all {
+  
+}
+.btn--checkout {
+  background-color: lightgray;
+  border: .1rem solid lightgray;
+}
+
+/* Basket */
+.basket-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+}
+
+.basket-container .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.basket-container .item__name { font-style: italic; text-align: left }
+.basket-container .item__price-quantity { font-style: italic; text-align: right }
+.basket-container .btn--add, .basket-container .btn--remove { margin: 0 .25rem }
+.item__price-total, .item__price-shipping, .item__price-tax, .item__price-brut {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.item__name, .item__actions, .item__price-quantity { flex: 1 1 6rem; text-align: center; }

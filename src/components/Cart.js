@@ -25,8 +25,8 @@ const Cart = () => {
       <Header countCartItems={cartItems.length} />
       
       <div className="row">
-        <Main products={products} onAdd={AddItem} />
-        <Basket cartItems={cartItems} onAdd={AddItem} onRemove={RemoveItem} />
+        <Main products={products} AddItem={AddItem} />
+        <Basket cartItems={cartItems} AddItem={AddItem} RemoveItem={RemoveItem} />
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const Main = props => {
       
       <div className="products-container">
           { products.map(product => (
-              <Product key={product.id} product={product} onAdd={AddItem} />) )}
+              <Product key={product.id} product={product} AddItem={AddItem} />) )}
       </div>
     </div>
   );
