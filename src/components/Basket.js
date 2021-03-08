@@ -21,7 +21,9 @@ const Basket = props => {
 
         {cartItems.map(item => (
           <div key={item.id} className="item">
+            <img src={item.image} alt={item.name} className='item__img' />
             <div className="item__name"> {item.name} </div>
+            
 
             <div className="item__actions">
               <AiOutlinePlus onClick={() => AddItem(item)} className="btn btn--add" />
